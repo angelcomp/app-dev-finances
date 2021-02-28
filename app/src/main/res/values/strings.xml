@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">dev.finances</string>
+    <string name="entradas">Entradas</string>
+    <string name="saidas">Saídas</string>
+    <string name="total">Total</string>
+    <string name="dev_finance">dev.finance$</string>
+    <string name="nova_transac">Nova Transação</string>
+    <string name="consultar">Consultar Extratos</string>
 </resources>
