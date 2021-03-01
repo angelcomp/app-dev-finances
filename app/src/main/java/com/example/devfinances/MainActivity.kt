@@ -13,6 +13,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
+        binding.btnNovaTransacao.setOnClickListener {
+            callTransacoes()
+        }
+
         setContentView(binding.root)
+    }
+
+    fun callTransacoes() {
+        val intent = Intent(this, TransacoesActivity::class.java)
+
+        startActivity(intent)
     }
 }
