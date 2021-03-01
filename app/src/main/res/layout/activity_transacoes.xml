@@ -46,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView7">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/etDescricao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
@@ -64,11 +64,11 @@
                 android:layout_margin="15dp"
                 android:layout_marginTop="74dp"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+                app:layout_constraintTop_toBottomOf="@+id/etDescricao"
                 tools:layout_editor_absoluteX="13dp">
 
                 <EditText
-                    android:id="@+id/editTextNumber"
+                    android:id="@+id/etValor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -82,7 +82,10 @@
                     android:id="@+id/btnSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:background="@color/teal_700"
+                    android:padding="7dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginStart="10dp"
                     android:text="Gasto"
                     android:typeface="sans" />
             </LinearLayout>
@@ -131,7 +134,7 @@
                 tools:layout_editor_absoluteY="15dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnSalvar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
