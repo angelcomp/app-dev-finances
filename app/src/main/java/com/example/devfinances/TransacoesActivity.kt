@@ -3,6 +3,8 @@ package com.example.devfinances
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import com.example.devfinances.databinding.ActivityTransacoesBinding
 import com.example.devfinances.models.Gasto
@@ -28,6 +30,18 @@ class TransacoesActivity : AppCompatActivity() {
             informacoesGasto()
         }
 
+        val switch: SwitchCompat = binding.btnSwitch
+        switch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                switch.text = "Ganho"
+                ganhou = true
+            } else {
+                switch.text = "Gasto"
+                ganhou = false
+
+            }
+        }
+
         calendario()
 
         binding.btnCancelar.setOnClickListener {
@@ -42,20 +56,10 @@ class TransacoesActivity : AppCompatActivity() {
         val valor: Double = binding.etValor.text.toString().toDouble()
         val data: String = calendario()
 
-        val switch: SwitchCompat = binding.btnSwitch
-        switch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                switch.text = "Ganho"
-                ganhou = true
-            } else {
-                switch.text = "Gasto"
-                ganhou = false
-
-            }
-        }
 
         val gasto = Gasto(null, descricao, valor, data, ganhou)
         lista.add(gasto)
+        Toast.makeText(this,gasto.toString(), Toast.LENGTH_SHORT).show()
 
     }
 
