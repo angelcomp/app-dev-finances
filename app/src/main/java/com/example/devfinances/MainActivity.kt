@@ -17,7 +17,17 @@ class MainActivity : AppCompatActivity() {
             callTransacoes()
         }
 
+        binding.btnConsulta.setOnClickListener {
+            callExtrato()
+        }
+
         setContentView(binding.root)
+    }
+
+    fun callExtrato() {
+        val intent = Intent(this, ExtratoActivity::class.java)
+
+        startActivity(intent)
     }
 
     fun callTransacoes() {
