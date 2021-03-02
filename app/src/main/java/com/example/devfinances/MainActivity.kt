@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.devfinances.databinding.ActivityMainBinding
+import com.example.devfinances.extratos.ExtratoActivity
 
 class MainActivity : AppCompatActivity() {
 
