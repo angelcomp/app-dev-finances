@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TransacoesActivity">
+    tools:context=".ui.TransacoesActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -46,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView7">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/etDescricao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
@@ -62,21 +62,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:layout_marginTop="74dp"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-                tools:layout_editor_absoluteX="13dp">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDescricao">
 
                 <EditText
-                    android:id="@+id/editTextNumber"
+                    android:id="@+id/etValor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:ems="10"
                     android:hint="Valor"
-                    android:inputType="numberDecimal"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+                    android:inputType="numberDecimal" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/btnSwitch"
@@ -131,7 +129,7 @@
                 tools:layout_editor_absoluteY="15dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnSalvar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"

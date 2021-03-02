@@ -9,10 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Devfinances">
-        <activity android:name=".extratos.ExtratoActivity"></activity>
-        <activity android:name=".TransacoesActivity" />
-        <activity android:name=".TransacaoActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.ExtratosActivity"></activity>
+        <activity android:name=".ui.TransacoesActivity" />
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

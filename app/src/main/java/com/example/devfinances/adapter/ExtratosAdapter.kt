@@ -1,11 +1,11 @@
-package com.example.devfinances.extratos
+package com.example.devfinances.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.devfinances.Gasto
+import com.example.devfinances.domain.Gasto
 import com.example.devfinances.R
 
 class ExtratosAdapter(val listaGastos: List<Gasto>) :
@@ -34,9 +34,5 @@ class ExtratosAdapter(val listaGastos: List<Gasto>) :
             valor.text = "R$ ${gasto.valor}"
             data.text = gasto.data
         }
-
-
     }
-
-
 }
