@@ -9,12 +9,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.devfinances.databinding.ActivityExtratoBinding
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.devfinances.ListaSingleton
 import com.example.devfinances.adapter.ExtratosAdapter
 import com.example.devfinances.domain.Gasto
 import com.example.devfinances.viewModel.AppViewModel
 import com.example.devfinances.viewModel.AppViewModelFactory
 
-class ExtratosActivity : AppCompatActivity() {
+class ExtratosActivity : AppCompatActivity(), ExtratosAdapter.onItemClickListener {
 
     lateinit var binding: ActivityExtratoBinding
     lateinit var adapter: ExtratosAdapter
@@ -33,8 +34,7 @@ class ExtratosActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        viewModel.atualizarLista()
-        adapter = ExtratosAdapter(viewModel.listinha)
+        adapter = ExtratosAdapter(ListaSingleton.lista, this)
         binding.rvGastos.layoutManager = LinearLayoutManager(this)
         binding.rvGastos.setHasFixedSize(true)
         binding.rvGastos.adapter = adapter
@@ -43,5 +43,10 @@ class ExtratosActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         adapter.notifyDataSetChanged()
+    }
+
+    override fun delete(position: Int) {
+        viewModel.remove(position)
+        setupRecyclerView()
     }
 }

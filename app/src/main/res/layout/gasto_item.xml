@@ -17,7 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp">
+            android:padding="8dp">
 
             <TextView
                 android:id="@+id/tvDescricaoGasto"
@@ -43,7 +43,7 @@
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDescricaoGasto"
-                app:layout_constraintWidth_percent="0.5" />
+                app:layout_constraintWidth_percent="0.42" />
 
             <TextView
                 android:id="@+id/tvDataGasto"
@@ -54,9 +54,20 @@
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvValorGasto"
                 app:layout_constraintTop_toBottomOf="@+id/tvDescricaoGasto"
-                app:layout_constraintWidth_percent="0.5" />
+                app:layout_constraintWidth_percent="0.42" />
+
+            <ImageView
+                android:id="@+id/ivRemove"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvDataGasto"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescricaoGasto"
+                app:srcCompat="@drawable/ic_remove" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

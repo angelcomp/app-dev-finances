@@ -1,17 +1,24 @@
 package com.example.devfinances.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.devfinances.domain.Gasto
 import com.example.devfinances.R
+import com.example.devfinances.ui.MainActivity
 
-class ExtratosAdapter(val listaGastos: List<Gasto>) :
+class ExtratosAdapter(val listaGastos: List<Gasto>, private val listener: onItemClickListener) :
     RecyclerView.Adapter<ExtratosAdapter.ExtratosViewHolder>() {
+
+    interface onItemClickListener {
+        fun delete(position: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExtratosViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.gasto_item, parent, false)
@@ -22,6 +29,11 @@ class ExtratosAdapter(val listaGastos: List<Gasto>) :
 
     override fun onBindViewHolder(holder: ExtratosViewHolder, position: Int) {
         val gasto = listaGastos[position]
+
+        val remove = holder.itemView.findViewById<ImageView>(R.id.ivRemove)
+        remove.setOnClickListener {
+            listener.delete(position)
+        }
 
         holder.bindView(gasto)
     }
@@ -38,11 +50,11 @@ class ExtratosAdapter(val listaGastos: List<Gasto>) :
             data.text = gasto.data
 
             if (gasto.ganhou) {
-                valor.text = "${gasto.valor}0"
+                valor.text = "R$ ${gasto.valor}0"
                 valor.setTextColor(getResources().getColor(R.color.green))
                 card.setBackgroundColor(getResources().getColor(R.color.ganhei))
             } else {
-                valor.text = "-${gasto.valor}0"
+                valor.text = "R\$ -${gasto.valor}0"
                 valor.setTextColor(getResources().getColor(R.color.red))
                 card.setCardBackgroundColor(getResources().getColor(R.color.gastei))
             }

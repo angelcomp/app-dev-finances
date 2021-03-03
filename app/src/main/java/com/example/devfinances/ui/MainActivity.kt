@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-
         binding.btnNovaTransacao.setOnClickListener {
             callTransacoes()
         }
@@ -44,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         binding.tvEntradas.text = "R$ ${positivo}0"
         binding.tvSaidas.text = "R$ ${negativo}0"
         binding.tvTotal.text = "R$ ${total}0"
-        Toast.makeText(this, positivo.toString(), Toast.LENGTH_SHORT).show()
     }
 
     fun callExtrato() {
