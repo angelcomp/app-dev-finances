@@ -17,7 +17,8 @@ import com.example.devfinances.viewModel.AppViewModelFactory
 class ExtratosActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityExtratoBinding
-    //val viewModel: MainViewModel by viewModels()
+    lateinit var adapter: ExtratosAdapter
+
     val viewModel by lazy {
         ViewModelProvider(this, AppViewModelFactory())
             .get(AppViewModel::class.java)
@@ -26,15 +27,21 @@ class ExtratosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExtratoBinding.inflate(layoutInflater)
+        setupRecyclerView()
 
         setContentView(binding.root)
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.seila()
+    private fun setupRecyclerView() {
+        viewModel.atualizarLista()
+        adapter = ExtratosAdapter(viewModel.listinha)
         binding.rvGastos.layoutManager = LinearLayoutManager(this)
         binding.rvGastos.setHasFixedSize(true)
-        binding.rvGastos.adapter = ExtratosAdapter(viewModel.listinha)
+        binding.rvGastos.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
     }
 }

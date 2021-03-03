@@ -30,7 +30,6 @@ class TransacoesActivity : AppCompatActivity() {
 
         binding.btnSalvar.setOnClickListener {
             viewModel.add(informacoesGasto())
-            viewModel.seila()
 
             Toast.makeText(this, viewModel.listinha.size.toString(), Toast.LENGTH_SHORT).show()
             finish()

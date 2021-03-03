@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.devfinances.ListaSingleton
+import com.example.devfinances.ListaSingleton.negativo
+import com.example.devfinances.ListaSingleton.positivo
+import com.example.devfinances.ListaSingleton.total
 import com.example.devfinances.databinding.ActivityMainBinding
+import com.example.devfinances.domain.Gasto
 import com.example.devfinances.viewModel.AppViewModel
 import com.example.devfinances.viewModel.AppViewModelFactory
 
@@ -35,12 +40,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.seila()
-        binding.tvEntradas.text = "R$ ${viewModel.positivo}0"
-        binding.tvSaidas.text = "R$ ${viewModel.negativo}0"
-        binding.tvTotal.text = "R$ ${viewModel.total}0"
-//        Toast.makeText(this, viewModel.positivo.toString(), Toast.LENGTH_SHORT).show()
-
+        viewModel.atualizarLista()
+        binding.tvEntradas.text = "R$ ${positivo}0"
+        binding.tvSaidas.text = "R$ ${negativo}0"
+        binding.tvTotal.text = "R$ ${total}0"
+        Toast.makeText(this, positivo.toString(), Toast.LENGTH_SHORT).show()
     }
 
     fun callExtrato() {

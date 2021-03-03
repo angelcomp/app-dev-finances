@@ -1,9 +1,11 @@
 package com.example.devfinances.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.devfinances.domain.Gasto
 import com.example.devfinances.R
@@ -25,14 +27,25 @@ class ExtratosAdapter(val listaGastos: List<Gasto>) :
     }
 
     class ExtratosViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
         fun bindView(gasto: Gasto) = with(itemView) {
             val descricao = findViewById<TextView>(R.id.tvDescricaoGasto)
             val valor = findViewById<TextView>(R.id.tvValorGasto)
             val data = findViewById<TextView>(R.id.tvDataGasto)
+            var card = findViewById<CardView>(R.id.card)
 
             descricao.text = gasto.descricao
-            valor.text = "R$ ${gasto.valor}"
             data.text = gasto.data
+
+            if (gasto.ganhou) {
+                valor.text = "${gasto.valor}0"
+                valor.setTextColor(getResources().getColor(R.color.green))
+                card.setBackgroundColor(getResources().getColor(R.color.ganhei))
+            } else {
+                valor.text = "-${gasto.valor}0"
+                valor.setTextColor(getResources().getColor(R.color.red))
+                card.setCardBackgroundColor(getResources().getColor(R.color.gastei))
+            }
         }
     }
 }

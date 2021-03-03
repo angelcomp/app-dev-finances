@@ -3,47 +3,37 @@ package com.example.devfinances.viewModel
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
+import com.example.devfinances.ListaSingleton
 import com.example.devfinances.domain.Gasto
 
 class AppViewModel(): ViewModel() {
 
-    var listinha = mutableListOf<Gasto>()
-    var positivo: Double = 0.0
-    var negativo: Double = 0.0
-    var total: Double = 0.0
+    var listinha: MutableList<Gasto> = mutableListOf()
 
-    fun seila() {
-        val element = Gasto("perdi na rua a 20 anos atras", 20.0, "12/05/2010", false)
-        val element1 = Gasto("ganhei de aniversario da familia no ano passado", 50.0, "15/08/2020", true)
-
-        listinha.add(element1)
-        listinha.add(element)
-        listinha.add(element1)
-
-        total = positivo + negativo
-
-        Log.i("TAG", listinha.toString())
-
+    fun atualizarLista() {
+        listinha = ListaSingleton.lista
         somaGastos()
     }
 
     fun add(gasto: Gasto) {
-        listinha.add(gasto)
+        ListaSingleton.lista.add(gasto)
+        somaGastos()
     }
 
     fun remove(gasto: Gasto) {
         listinha.remove(gasto)
+        somaGastos()
 
     }
 
     fun somaGastos() {
         listinha.forEach {
             if (it.ganhou) {
-                positivo += it.valor
+                ListaSingleton.positivo += it.valor
             } else {
-                negativo -= it.valor
+                ListaSingleton.negativo -= it.valor
             }
         }
-        total = positivo + negativo
+        ListaSingleton.total = ListaSingleton.positivo + ListaSingleton.negativo
     }
 }
