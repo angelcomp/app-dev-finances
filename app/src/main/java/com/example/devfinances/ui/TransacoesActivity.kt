@@ -1,5 +1,6 @@
 package com.example.devfinances.ui
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -10,6 +11,8 @@ import com.example.devfinances.databinding.ActivityTransacoesBinding
 import com.example.devfinances.domain.Gasto
 import com.example.devfinances.viewModel.AppViewModel
 import com.example.devfinances.viewModel.AppViewModelFactory
+import java.lang.Exception
+import java.text.SimpleDateFormat
 import java.util.*
 
 class TransacoesActivity : AppCompatActivity() {
@@ -29,10 +32,14 @@ class TransacoesActivity : AppCompatActivity() {
         binding = ActivityTransacoesBinding.inflate(layoutInflater)
 
         binding.btnSalvar.setOnClickListener {
-            viewModel.add(informacoesGasto())
+            val gasto = informacoesGasto()
 
-            Toast.makeText(this, viewModel.listinha.size.toString(), Toast.LENGTH_SHORT).show()
-            finish()
+            if (gasto == -1) {
+                Toast.makeText(this, "Preencha os campos corretamente!", Toast.LENGTH_LONG).show()
+            } else {
+                viewModel.add(gasto as Gasto)
+                finish()
+            }
         }
 
         val switch: SwitchCompat = binding.btnSwitch
@@ -43,11 +50,8 @@ class TransacoesActivity : AppCompatActivity() {
             } else {
                 switch.text = "Gasto"
                 ganhou = false
-
             }
         }
-
-        calendario()
 
         binding.btnCancelar.setOnClickListener {
             finish()
@@ -56,12 +60,27 @@ class TransacoesActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    private fun informacoesGasto(): Gasto {
-        val descricao: String = binding.etDescricao.text.toString()
-        val valor: Double = binding.etValor.text.toString().toDouble()
-        val data: String = calendario()
+    private fun informacoesGasto(): Any {
+        try {
+            if (binding.etDescricao.editText!!.text.toString().isNotEmpty()) {
+                var data = calendario()
+                if (data == "") {
+                    val sdf = SimpleDateFormat("dd/M/yyyy")
+                    data = sdf.format(Date())
+                }
 
-        return Gasto(descricao, valor, data, ganhou)
+                return Gasto(
+                    binding.etDescricao.editText!!.text.toString(),
+                    binding.etValor.editText!!.text.toString().toDouble(),
+                    data,
+                    ganhou
+                )
+            } else {
+                return -1
+            }
+        } catch (ex: Exception) {
+            return -1
+        }
     }
 
     private fun calendario(): String {
@@ -69,7 +88,8 @@ class TransacoesActivity : AppCompatActivity() {
         val today = Calendar.getInstance()
 
         datePicker.init(
-            today.get(Calendar.YEAR), today.get(Calendar.MONTH),
+            today.get(Calendar.YEAR),
+            today.get(Calendar.MONTH),
             today.get(Calendar.DAY_OF_MONTH)
         ) { view, year, month, day ->
             val month = month + 1

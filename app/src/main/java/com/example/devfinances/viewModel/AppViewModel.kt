@@ -5,7 +5,7 @@ import com.example.devfinances.ListaSingleton
 import com.example.devfinances.domain.Gasto
 import java.text.FieldPosition
 
-class AppViewModel(): ViewModel() {
+class AppViewModel() : ViewModel() {
 
     var listinha: MutableList<Gasto> = mutableListOf()
 
@@ -35,7 +35,6 @@ class AppViewModel(): ViewModel() {
                 ListaSingleton.positivo += it.valor
             } else {
                 ListaSingleton.negativo -= it.valor
-                println("valor: ${ListaSingleton.negativo}")
             }
         }
         ListaSingleton.total = ListaSingleton.positivo + ListaSingleton.negativo
