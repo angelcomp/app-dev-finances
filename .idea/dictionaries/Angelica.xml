@@ -3,8 +3,10 @@
     <words>
       <w>descricao</w>
       <w>extrato</w>
+      <w>extratos</w>
       <w>ganho</w>
       <w>gasto</w>
+      <w>gastos</w>
     </words>
   </dictionary>
 </component>

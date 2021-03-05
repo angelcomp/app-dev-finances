@@ -22,10 +22,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginHorizontal="20dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/nova_transac"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="45sp"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -61,8 +62,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="Descrição do gasto"
-                    android:inputType="text" />
+                    android:hint="@string/descricao_do_gasto"
+                    android:inputType="text"
+                    android:textSize="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
@@ -80,7 +82,7 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:textColorHint="@color/green">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -88,15 +90,16 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:hint="Valor"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        android:textSize="18dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/btnSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="Gasto"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/gasto"
                     android:typeface="sans" />
             </LinearLayout>
 
@@ -105,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
-                android:text="Utilize ponto para casas decimais\ne escolha entre Gasto ou Ganho"
+                android:text="@string/texto_dica"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -128,7 +131,7 @@
         <TextView
             android:id="@+id/text"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -144,9 +147,9 @@
                 android:id="@+id/btnCancelar"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
+                android:layout_marginEnd="15dp"
                 android:backgroundTint="#FF0000"
-                android:text="Cancelar"
+                android:text="@string/cancelar"
                 tools:layout_editor_absoluteX="107dp"
                 tools:layout_editor_absoluteY="15dp" />
 
@@ -154,8 +157,8 @@
                 android:id="@+id/btnSalvar"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="Salvar"
+                android:layout_marginStart="15dp"
+                android:text="@string/salvar"
                 tools:layout_editor_absoluteX="314dp"
                 tools:layout_editor_absoluteY="15dp" />
         </LinearLayout>

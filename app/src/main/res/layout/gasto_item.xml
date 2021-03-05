@@ -10,9 +10,9 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
         android:layout_marginHorizontal="2dp"
-        android:layout_marginBottom="3dp">
+        android:layout_marginBottom="3dp"
+        app:cardCornerRadius="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,10 +24,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Descrição"
-                android:textStyle="bold"
+                android:text="@string/descricao"
                 android:textColor="@color/black"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -36,9 +36,9 @@
                 android:id="@+id/tvValorGasto"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Valor"
                 android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/valor"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,9 +49,9 @@
                 android:id="@+id/tvDataGasto"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Data"
                 android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/data"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@id/tvValorGasto"
