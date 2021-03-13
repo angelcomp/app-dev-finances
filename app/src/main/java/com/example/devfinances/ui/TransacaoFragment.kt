@@ -1,44 +1,59 @@
 package com.example.devfinances.ui
 
-import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Application
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import androidx.lifecycle.ViewModelProvider
-import com.example.devfinances.databinding.ActivityExtratoBinding
-import com.example.devfinances.databinding.ActivityTransacoesBinding
+import androidx.navigation.fragment.findNavController
+import com.example.devfinances.R
+import com.example.devfinances.databinding.FragmentHomeBinding
+import com.example.devfinances.databinding.FragmentTransacaoBinding
 import com.example.devfinances.domain.Gasto
 import com.example.devfinances.viewModel.AppViewModel
 import com.example.devfinances.viewModel.AppViewModelFactory
-import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TransacoesActivity : AppCompatActivity() {
+class TransacaoFragment : Fragment() {
 
-    private lateinit var binding: ActivityTransacoesBinding
     var data: String = ""
     private var ganhou: Boolean = false
 
-    //val viewModel: MainViewModel by viewModels()
+    private var _binding: FragmentTransacaoBinding? = null
+    private val binding get() = _binding!!
+
+    lateinit var application: Application
     val viewModel by lazy {
-        ViewModelProvider(this, AppViewModelFactory())
+        ViewModelProvider(this, AppViewModelFactory(application))
             .get(AppViewModel::class.java)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityTransacoesBinding.inflate(layoutInflater)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        application = requireActivity().getApplication()!!
+
+        _binding = FragmentTransacaoBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.btnSalvar.setOnClickListener {
             val gasto = informacoesGasto()
 
             if (gasto == -1) {
-                Toast.makeText(this, "Preencha os campos corretamente!", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Preencha os campos corretamente!", Toast.LENGTH_LONG).show()
             } else {
                 viewModel.add(gasto as Gasto)
-                finish()
+                findNavController().popBackStack()
             }
         }
 
@@ -54,10 +69,8 @@ class TransacoesActivity : AppCompatActivity() {
         }
 
         binding.btnCancelar.setOnClickListener {
-            finish()
+            findNavController().popBackStack()
         }
-
-        setContentView(binding.root)
     }
 
     private fun informacoesGasto(): Any {
@@ -70,6 +83,7 @@ class TransacoesActivity : AppCompatActivity() {
                 }
 
                 return Gasto(
+                    null,
                     binding.etDescricao.editText!!.text.toString(),
                     binding.etValor.editText!!.text.toString().toDouble(),
                     data,

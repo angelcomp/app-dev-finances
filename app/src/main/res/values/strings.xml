@@ -16,4 +16,6 @@
     <string name="texto_dica">Utilize ponto para casas decimais\ne escolha entre Gasto ou Ganho</string>
     <string name="cancelar">Cancelar</string>
     <string name="salvar">Salvar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

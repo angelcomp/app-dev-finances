@@ -1,42 +1,39 @@
 package com.example.devfinances.viewModel
 
-import androidx.lifecycle.ViewModel
-import com.example.devfinances.ListaSingleton
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.example.devfinances.database.GastoRepository
 import com.example.devfinances.domain.Gasto
-import java.text.FieldPosition
+import com.example.devfinances.domain.Saldo
+import kotlinx.coroutines.launch
 
-class AppViewModel() : ViewModel() {
-
-    var listinha: MutableList<Gasto> = mutableListOf()
+class AppViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository = GastoRepository(application)
+    var listinha = MutableLiveData<List<Gasto>>()
+    var saldo = MutableLiveData<Saldo>()
 
     fun atualizarLista() {
-        listinha = ListaSingleton.lista
-        somaGastos()
+        viewModelScope.launch {
+            listinha.value = repository.getAll()
+
+            saldo.value = repository.somaGastos(listinha.value!!)
+        }
     }
 
     fun add(gasto: Gasto) {
-        ListaSingleton.lista.add(gasto)
-        atualizarLista()
+        viewModelScope.launch {
+            repository.insert(gasto)
+            atualizarLista()
+        }
     }
 
     fun remove(position: Int) {
-        var gasto = ListaSingleton.lista[position]
-        ListaSingleton.lista.remove(gasto)
-        atualizarLista()
-    }
-
-    fun somaGastos() {
-        ListaSingleton.total = 0.0
-        ListaSingleton.positivo = 0.0
-        ListaSingleton.negativo = 0.0
-
-        ListaSingleton.lista.forEach {
-            if (it.ganhou) {
-                ListaSingleton.positivo += it.valor
-            } else {
-                ListaSingleton.negativo -= it.valor
-            }
+        viewModelScope.launch {
+            val gasto = listinha.value!![position]
+            repository.delete(gasto.id.toString())
+            atualizarLista()
         }
-        ListaSingleton.total = ListaSingleton.positivo + ListaSingleton.negativo
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.devfinances.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_extratosFragment"
+            app:destination="@id/extratosFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_transacaoFragment"
+            app:destination="@id/transacaoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/extratosFragment"
+        android:name="com.example.devfinances.ui.ExtratosFragment"
+        android:label="fragment_extratos"
+        tools:layout="@layout/fragment_extratos" />
+    <fragment
+        android:id="@+id/transacaoFragment"
+        android:name="com.example.devfinances.ui.TransacaoFragment"
+        android:label="fragment_transacao"
+        tools:layout="@layout/fragment_transacao" />
+</navigation>

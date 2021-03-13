@@ -3,17 +3,14 @@ package com.example.devfinances.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.devfinances.domain.Gasto
 import com.example.devfinances.R
-import com.example.devfinances.ui.MainActivity
 
-class ExtratosAdapter(val listaGastos: List<Gasto>, private val listener: onItemClickListener) :
+class ExtratosAdapter(var listaGastos: List<Gasto>, private val listener: onItemClickListener) :
     RecyclerView.Adapter<ExtratosAdapter.ExtratosViewHolder>() {
 
     interface onItemClickListener {
