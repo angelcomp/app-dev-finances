@@ -3,6 +3,10 @@ package com.example.devfinances.database
 import android.app.Application
 import com.example.devfinances.domain.Gasto
 import com.example.devfinances.domain.Saldo
+import java.math.BigDecimal
+import java.math.RoundingMode
+import kotlin.math.round
+import kotlin.math.truncate
 
 class GastoRepository(application: Application) {
     private val gastoDao: GastoDAO
@@ -34,9 +38,9 @@ class GastoRepository(application: Application) {
                 saldo.negativo -= it.valor
             }
         }
-        saldo.positivo = String.format("%.2f", saldo.positivo).toDouble()
-        saldo.negativo = String.format("%.2f", saldo.negativo).toDouble()
-        saldo.total = String.format("%.2f", (saldo.positivo + saldo.negativo)).toDouble()
+        saldo.positivo = BigDecimal(saldo.positivo).setScale(2, RoundingMode.HALF_EVEN).toDouble()
+        saldo.negativo = BigDecimal(saldo.negativo).setScale(2, RoundingMode.HALF_EVEN).toDouble()
+        saldo.total = BigDecimal(saldo.positivo + saldo.negativo).setScale(2, RoundingMode.HALF_EVEN).toDouble()
 
         return saldo
     }

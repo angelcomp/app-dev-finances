@@ -23,7 +23,6 @@ import java.util.*
 
 class TransacaoFragment : Fragment() {
 
-    var data: String = ""
     private var ganhou: Boolean = false
 
     private var _binding: FragmentTransacaoBinding? = null
@@ -52,7 +51,8 @@ class TransacaoFragment : Fragment() {
             val gasto = informacoesGasto()
 
             if (gasto == -1) {
-                Toast.makeText(context, "Preencha os campos corretamente!", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Preencha os campos corretamente!", Toast.LENGTH_LONG)
+                    .show()
             } else {
                 viewModel.add(gasto as Gasto)
                 findNavController().popBackStack()
@@ -91,7 +91,7 @@ class TransacaoFragment : Fragment() {
         }
     }
 
-   fun calendario(): String {
+    fun calendario(): String {
         val datePicker = binding.etData
 
         val day = datePicker.dayOfMonth
