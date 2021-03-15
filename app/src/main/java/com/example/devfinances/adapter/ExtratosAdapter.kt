@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.devfinances.domain.Gasto
 import com.example.devfinances.R
@@ -47,13 +48,13 @@ class ExtratosAdapter(var listaGastos: List<Gasto>, private val listener: onItem
             data.text = gasto.data
 
             if (gasto.ganhou) {
-                valor.text = "R$ ${gasto.valor}0"
-                valor.setTextColor(getResources().getColor(R.color.green))
-                card.setBackgroundColor(getResources().getColor(R.color.ganhei))
+                valor.text = "R$ ${gasto.valor}"
+                card.setCardBackgroundColor(ContextCompat.getColor(context, R.color.green))
+                card.setCardBackgroundColor(ContextCompat.getColor(context, R.color.ganhei))
             } else {
-                valor.text = "R\$ -${gasto.valor}0"
-                valor.setTextColor(getResources().getColor(R.color.red))
-                card.setCardBackgroundColor(getResources().getColor(R.color.gastei))
+                valor.text = "R\$ -${gasto.valor}"
+                valor.setTextColor(ContextCompat.getColor(context, R.color.red))
+                card.setCardBackgroundColor(ContextCompat.getColor(context, R.color.gastei))
             }
         }
     }

@@ -13,9 +13,9 @@
     <string name="data">Data</string>
     <string name="descricao_do_gasto">Descrição do gasto</string>
     <string name="gasto">Gasto</string>
-    <string name="texto_dica">Utilize ponto para casas decimais\ne escolha entre Gasto ou Ganho</string>
+    <string name="texto_dica">Utilize ponto para as casas decimais</string>
     <string name="cancelar">Cancelar</string>
     <string name="salvar">Salvar</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gastei">Gastei</string>
+    <string name="ganhei">Ganhei</string>
 </resources>

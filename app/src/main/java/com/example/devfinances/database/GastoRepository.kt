@@ -1,10 +1,8 @@
 package com.example.devfinances.database
 
 import android.app.Application
-import androidx.lifecycle.MutableLiveData
 import com.example.devfinances.domain.Gasto
 import com.example.devfinances.domain.Saldo
-import java.lang.Exception
 
 class GastoRepository(application: Application) {
     private val gastoDao: GastoDAO
@@ -27,7 +25,7 @@ class GastoRepository(application: Application) {
     }
 
     fun somaGastos(listinha: List<Gasto>): Saldo {
-        var saldo: Saldo = Saldo(0.0,0.0,0.0)
+        var saldo: Saldo = Saldo(0.0, 0.0, 0.0)
 
         listinha.forEach {
             if (it.ganhou) {

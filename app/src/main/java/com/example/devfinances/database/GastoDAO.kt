@@ -1,6 +1,5 @@
 package com.example.devfinances.database
 
-import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query

@@ -8,10 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.devfinances.R
 import com.example.devfinances.adapter.ExtratosAdapter
 import com.example.devfinances.databinding.FragmentExtratosBinding
-import com.example.devfinances.databinding.FragmentHomeBinding
 import com.example.devfinances.domain.Gasto
 import com.example.devfinances.viewModel.AppViewModel
 import com.example.devfinances.viewModel.AppViewModelFactory

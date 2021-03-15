@@ -1,11 +1,13 @@
 package com.example.devfinances.ui
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import androidx.lifecycle.ViewModelProvider
@@ -57,15 +59,11 @@ class TransacaoFragment : Fragment() {
             }
         }
 
-        val switch: SwitchCompat = binding.btnSwitch
-        switch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                switch.text = "Ganho"
-                ganhou = true
-            } else {
-                switch.text = "Gasto"
-                ganhou = false
-            }
+        binding.ganhei.setOnClickListener {
+            ganhou = true
+        }
+        binding.gastei.setOnClickListener {
+            ganhou = false
         }
 
         binding.btnCancelar.setOnClickListener {
@@ -77,10 +75,6 @@ class TransacaoFragment : Fragment() {
         try {
             if (binding.etDescricao.editText!!.text.toString().isNotEmpty()) {
                 var data = calendario()
-                if (data == "") {
-                    val sdf = SimpleDateFormat("dd/M/yyyy")
-                    data = sdf.format(Date())
-                }
 
                 return Gasto(
                     null,
@@ -97,18 +91,13 @@ class TransacaoFragment : Fragment() {
         }
     }
 
-    private fun calendario(): String {
+   fun calendario(): String {
         val datePicker = binding.etData
-        val today = Calendar.getInstance()
 
-        datePicker.init(
-            today.get(Calendar.YEAR),
-            today.get(Calendar.MONTH),
-            today.get(Calendar.DAY_OF_MONTH)
-        ) { view, year, month, day ->
-            val month = month + 1
-            data = "$day/$month/$year"
-        }
-        return data
+        val day = datePicker.dayOfMonth
+        val month = datePicker.month + 1
+        val year = datePicker.year
+
+        return "$day/$month/$year"
     }
 }
