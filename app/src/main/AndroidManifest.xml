@@ -8,13 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Devfinances">
-        <activity
-            android:name=".ui.ExtratosActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.TransacoesActivity"
-            android:screenOrientation="portrait" />
+        android:theme="@style/theme.splash">
+
         <activity
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait">
