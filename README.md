@@ -3,11 +3,19 @@
 
 ## Versão Android do site web feito na maratona discover ##
 
-#### 💭 SOBRE: ###
-<p>Este é um projeto que tive engajamento para desenvolver porque eu precisava de uma ideia para um app android para treinar e aprimorar meus conhecimentos, e após ter feito a maratona discover e construído um site para finanças pessoais e resolvi torná-lo um app mobile também.</p>
-
 #### 💻 VERSÃO WEB: ###
 [Maratona Discover](https://github.com/angelcomp/maratona-discover)
+
+
+<p>Este é um projeto que tive engajamento para desenvolver porque eu precisava de uma ideia para um app android para treinar e aprimorar meus conhecimentos, e após ter feito a maratona discover e construído um site para finanças pessoais e resolvi torná-lo um app mobile também.</p>
+
+#### 🔧 Ferramentas e Linguagens: 
+
+- Android | Kotlin
+- Android Studio (IDE)
+- Pixel 4 (Emulador)
+- Github (Versionamento de Código)
+- Photoshop (Edição imagens)
 
 #### 👀 PREVIEW: ###
 
