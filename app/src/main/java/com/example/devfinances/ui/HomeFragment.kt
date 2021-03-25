@@ -48,9 +48,11 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.saldo.observe(viewLifecycleOwner, {
-            binding.tvEntradas.text = "R$ ${it.positivo}"
-            binding.tvSaidas.text = "R$ ${it.negativo}"
-            binding.tvTotal.text = "R$ ${it.total}"
+            binding.tvEntradas.text = String.format("R$ %.2f", it.positivo)
+            binding.tvSaidas.text = String.format("R$ %.2f", it.negativo)
+            binding.tvTotal.text = String.format("R$ %.2f", it.total)
+
+
         })
     }
 

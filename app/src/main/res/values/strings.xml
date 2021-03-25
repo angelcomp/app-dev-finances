@@ -18,4 +18,6 @@
     <string name="salvar">Salvar</string>
     <string name="gastei">Gastei</string>
     <string name="ganhei">Ganhei</string>
+
+    <string name="grana">R$ </string>
 </resources>

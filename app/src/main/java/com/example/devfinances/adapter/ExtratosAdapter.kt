@@ -48,11 +48,11 @@ class ExtratosAdapter(var listaGastos: List<Gasto>, private val listener: onItem
             data.text = gasto.data
 
             if (gasto.ganhou) {
-                valor.text = "R$ ${gasto.valor}"
+                valor.text = String.format("R$ %.2f", gasto.valor)
                 card.setCardBackgroundColor(ContextCompat.getColor(context, R.color.green))
                 card.setCardBackgroundColor(ContextCompat.getColor(context, R.color.ganhei))
             } else {
-                valor.text = "R\$ -${gasto.valor}"
+                valor.text = String.format("R$ -%.2f", gasto.valor)
                 valor.setTextColor(ContextCompat.getColor(context, R.color.red))
                 card.setCardBackgroundColor(ContextCompat.getColor(context, R.color.gastei))
             }
